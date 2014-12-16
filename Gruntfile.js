@@ -15,7 +15,7 @@ module.exports = function ( grunt ) {
 					banner: '<%= meta.banner %>'
 				},
 				files: {
-					'dist/<%= pkg.name %>.js': ['<%= pkg.main %>']
+					'dist/<%= pkg.name %>.js': ['compiled/<%= pkg.main %>']
 				}
 			}
 		},
@@ -26,7 +26,7 @@ module.exports = function ( grunt ) {
 					banner: '<%= meta.banner %>'
 				},
 				files: {
-					'dist/<%= pkg.name %>.min.js': ['<%= pkg.main %>']
+					'dist/<%= pkg.name %>.min.js': ['compiled/<%= pkg.main %>']
 				}
 			}
 		},
@@ -132,7 +132,7 @@ module.exports = function ( grunt ) {
 				files: ['<%= pkg.main %>', 'lib/**/*.js'],
 				tasks: ['browserify:standalone']
 			}
-		},
+		}
 
 	});
 
