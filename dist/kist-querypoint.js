@@ -1,4 +1,4 @@
-/*! kist-querypoint 0.0.0 - Simple media query breakpoints manager. | Author: Ivan Nikolić <niksy5@gmail.com> (http://ivannikolic.com/), 2014 | License: MIT */
+/*! kist-querypoint 0.1.0 - Simple media query breakpoints manager. | Author: Ivan Nikolić <niksy5@gmail.com> (http://ivannikolic.com/), 2014 | License: MIT */
 var Query = require('./query');
 var cache = {};
 
