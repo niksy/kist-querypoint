@@ -66,7 +66,7 @@ Callback to call when media query enters/exits.
 
 Type: `Boolean`
 
-Should you use default media query listener behavior or not (default behavior is to not fire callback on page load).
+Should you use native media query listener behavior or not (native behavior is to not fire callback on page load, only when exiting/entering query definition).
 
 ### `.ignore(cb)`
 
@@ -112,7 +112,7 @@ querypoint
 		}
 	}, true);
 
-// Ignore
+// Unlisten (ignore)
 querypoint
 	.get('bp-alpha-s')
 	.ignore(cb);
