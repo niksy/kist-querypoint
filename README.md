@@ -126,6 +126,6 @@ MIT © [Ivan Nikolić](http://ivannikolic.com)
 [ci]: https://travis-ci.org/niksy/querypoint
 [ci-img]: https://travis-ci.org/niksy/querypoint.svg?branch=master
 [browserstack]: https://www.browserstack.com/
-[browserstack-img]: https://www.browserstack.com/automate/badge.svg?badge_key=<badge_key>
+[browserstack-img]: https://www.browserstack.com/automate/badge.svg?badge_key=MHRpV0FMc0g5OEVEQXhDak1DRllDeFZxYnZOZitlR29ick5KaGRheEFXUT0tLWRkaXhrd21ZdGZHOElqMzExR1JObFE9PQ==--8d812569887b861e3e899a08c7bddca522ebe54f
 [media-query-string]: https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries
 [match-media]: https://developer.mozilla.org/en-US/docs/Web/API/Window/matchMedia
