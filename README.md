@@ -1,135 +1,131 @@
-# kist-querypoint
+# querypoint
 
-Simple media query breakpoints manager.
+[![Build Status][ci-img]][ci] [![BrowserStack Status][browserstack-img]][browserstack]
 
-## Installation
+Media query breakpoints manager.
+
+Features:
+
+* Named breakpoints for easier organization
+* Initial call when adding listener instead of native behavior (called on first media query event)
+
+## Install
 
 ```sh
-npm install kist-querypoint --save
+npm install querypoint --save
+```
 
-bower install kist-querypoint --save
+## Usage
+
+```js
+const querypoint = require('querypoint');
+const qp = querypoint();
+
+const listener = ( mq ) => {
+	if ( mq.matches ) {
+		// Matched!
+	}
+};
+
+qp.add('bp-alpha-s', 'screen and (min-width: 600px)');
+qp.add('bp-alpha-m', window.matchMedia('screen and (min-width: 800px)'));
+
+qp.get('bp-alpha-s').addListener(listener);
+// Subsequent same listener will be registered only once
+qp.get('bp-alpha-s').addListener(listener);
+
+// Remove single listener…
+qp.get('bp-alpha-s').removeListener(listener);
+// …or all registered listeners
+qp.get('bp-alpha-s').removeAllListeners();
+
+// Remove named breakpoint and all registered listeners
+qp.remove('bp-alpha-s');
 ```
 
 ## API
 
-### `.add(name, query)`
+### querypoint()
 
-Returns: `Query`
+Returns: `BreakpointManager`
 
-#### name
+Returns instance of breakpoint manager.
 
-Type: `String`
+### qp.add(breakpointName, mq)
 
-Breakpoint name.
+Returns: `Breakpoint`
 
-#### query
+Add breakpoint to breakpoint manager instance.
 
-Type: `String`
-
-Valid `matchMedia` query for resolving.
-
-### `.remove(name)`
-
-Returns: `Object` (querypoint)
-
-#### name
+#### breakpointName
 
 Type: `String`
 
-Name of breakpoint to remove.
+####  mq
 
-### `.get(name)`
+Type: `String|MediaQueryList`
 
-Returns: `Query`
+Valid [media query string][media-query-string] or instance of [`window.matchMedia`][match-media].
 
-#### name
+### qp.remove(breakpointName)
+
+Returns: `BreakpointManager`
+
+Remove breakpoint from breakpoint manager instance.
+
+#### breakpointName
 
 Type: `String`
 
-Name of breakpoint to get.
+### qp.get(breakpointName)
 
-### `.listen(cb, useNativeBehavior)`
+Returns: `Breakpoint`
 
-Returns: `Query`
+Returns [registered breakpoint](#registered-breakpoint) in breakpoint manager instance.
+
+#### breakpointName
+
+Type: `String`
+
+<a name="registered-breakpoint"></a>
+
+### breakpoint.addListener(cb)
+
+Add listener to breakpoint.
 
 #### cb
 
 Type: `Function`
 
-Callback to call when media query enters/exits.
+### breakpoint.removeListener(cb)
 
-| Argument | Type | Description |
-| --- | --- | --- |
-| `mq` | `MediaQueryList` | Current media query object. |
-
-#### useNativeBehavior
-
-Type: `Boolean`
-
-Should you use native media query listener behavior or not (native behavior is to not fire callback on page load, only when exiting/entering query definition).
-
-### `.ignore(cb)`
-
-Returns: `Query`
+Remove listener from breakpoint.
 
 #### cb
 
 Type: `Function`
 
-Callback to remove from listening.
+### breakpoint.removeAllListeners()
 
-## Examples
+Remove all registered listeners from breakpoint.
 
-```js
-var querypoint = require('kist-querypoint');
+## Test
 
-// Add querypoint
-querypoint.add('bp-alpha-s','screen and (min-width:600px)');
-querypoint.add('bp-alpha-m','screen and (min-width:800px)');
-querypoint.add('bp-alpha-l','screen and (min-width:1000px)');
+For local automated tests, run `npm run test:automated:local`.
 
-// Remove querypoint
-querypoint.remove('bp-alpha-s');
-
-// Get querypoint
-querypoint.get('bp-alpha-s');
-
-// Listen, even at page load
-querypoint
-	.get('bp-alpha-s')
-	.listen(function ( mq ) {
-		if ( mq.matches ) {
-			// Do something, even at page load
-		}
-	});
-
-// Listen, but only with native behavior
-querypoint
-	.get('bp-alpha-s')
-	.listen(function ( mq ) {
-		if ( mq.matches ) {
-			// Do something, but not on page load
-		}
-	}, true);
-
-// Unlisten (ignore)
-querypoint
-	.get('bp-alpha-s')
-	.ignore(cb);
-```
-
-### AMD and global
-
-```js
-define(['kist-querypoint'], cb);
-
-window.kist.querypoint;
-```
+For manual tests, run `npm run test:manual:local` and open <http://localhost:9000/> in your browser.
 
 ## Browser support
 
-Tested in IE8+ and all modern browsers.
+Tested in IE9+ and all modern browsers. For proper `window.matchMedia` support in IE9 you should use [polyfill](https://github.com/paulirish/matchMedia.js/).
 
 ## License
 
 MIT © [Ivan Nikolić](http://ivannikolic.com)
+
+[ci]: https://travis-ci.org/niksy/querypoint
+[ci-img]: https://travis-ci.org/niksy/querypoint.svg?branch=master
+[browserstack]: https://www.browserstack.com/
+[browserstack-img]: https://www.browserstack.com/automate/badge.svg?badge_key=<badge_key>
+[media-query-string]: https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries
+[match-media]: https://developer.mozilla.org/en-US/docs/Web/API/Window/matchMedia

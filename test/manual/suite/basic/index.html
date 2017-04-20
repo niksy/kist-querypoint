@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<title>Basic</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+	<link rel="stylesheet" href="basic/index.css" />
+</head>
+<body>
+	<div class="Test">
+
+		<h1 class="Test-title">querypoint tests</h1>
+
+		<h2 class="Test-describe">Breakpoint: bp-alpha-s</h2>
+
+		<h3 class="Test-it">should add and remove single listener</h3>
+		<div class="Test-run Breakpoint-01">
+			<button type="button" class="Action Action--addListener">Add listener</button>
+			<button type="button" class="Action Action--removeListener">Remove listener</button>
+		</div>
+
+		<h3 class="Test-it">should add and remove single listener, multiple times</h3>
+		<div class="Test-run Breakpoint-02">
+			<button type="button" class="Action Action--addListener">Add listener</button>
+			<button type="button" class="Action Action--removeListener">Remove listener</button>
+		</div>
+
+		<h2 class="Test-describe">Breakpoint: bp-alpha-s and bp-alpha-m</h2>
+
+		<h3 class="Test-it">should add and remove single listener</h3>
+		<div class="Test-run Breakpoint-03">
+			<button type="button" class="Action Action--addListener">Add listener</button>
+			<button type="button" class="Action Action--removeListener">Remove listener</button>
+		</div>
+
+		<h3 class="Test-it">should add and remove single listener, multiple times</h3>
+		<div class="Test-run Breakpoint-04">
+			<button type="button" class="Action Action--addListener">Add listener</button>
+			<button type="button" class="Action Action--removeListener">Remove listener</button>
+		</div>
+
+		<h2 class="Test-describe">Manager</h2>
+
+		<h3 class="Test-it">should add new named breakpoint</h3>
+		<div class="Test-run Manager">
+			<button type="button" class="Action Action--addNamedBreakpoint">Add named breakpoint</button>
+		</div>
+
+		<h3 class="Test-it">should remove named breakpoint</h3>
+		<div class="Test-run Manager">
+			<button type="button" class="Action Action--removeNamedBreakpoint">Remove named breakpoint</button>
+		</div>
+
+	</div>
+	<script src="basic/index.js"></script>
+</body>
+</html>
